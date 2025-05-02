@@ -5,11 +5,17 @@ import type { Validator } from './types'
 interface SecurePasswordInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   validators?: Validator[]
+  renderValidator?: (
+    value: string,
+    validator: Validator,
+    index?: number
+  ) => React.ReactNode
 }
 
 export const SecurePasswordInput: React.FC<SecurePasswordInputProps> = ({
   validators = defaultValidators,
   type = 'password',
+  renderValidator,
   ...inputProps
 }) => {
   const [value, setValue] = useState('')
@@ -31,19 +37,25 @@ export const SecurePasswordInput: React.FC<SecurePasswordInputProps> = ({
         onChange={handleChange}
       />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-        {validators.map((validator) => (
-          <div
-            key={validator.id}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              color: validator.validate(value) ? 'green' : 'red',
-            }}
-          >
-            {validator.validate(value) ? '✓' : '✗'} {validator.title}
-          </div>
-        ))}
+        {validators.map((validator, index) =>
+          renderValidator ? (
+            <React.Fragment key={validator.id}>
+              {renderValidator(value, validator, index)}
+            </React.Fragment>
+          ) : (
+            <div
+              key={validator.id}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                color: validator.validate(value) ? 'green' : 'red',
+              }}
+            >
+              {validator.validate(value) ? '✓' : '✗'} {validator.title}
+            </div>
+          )
+        )}
       </div>
     </div>
   )

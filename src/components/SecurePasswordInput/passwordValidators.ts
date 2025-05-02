@@ -1,24 +1,24 @@
 import type { Validator } from './types'
 
-export const hasNumber: Validator = {
+export const hasNumberValidator: Validator = {
   id: 'has-number',
   title: 'Contains a number (0-9)',
   validate: (value: string) => /[0-9]/.test(value),
 }
 
-export const hasSpecialChar: Validator = {
+export const hasSpecialCharValidator: Validator = {
   id: 'has-special-char',
   title: 'Contains a special character (!@#$%^&*)',
   validate: (value: string) => /[!@#$%^&*]/.test(value),
 }
 
-export const hasUppercase: Validator = {
+export const hasUppercaseValidator: Validator = {
   id: 'has-uppercase',
   title: 'Contains an uppercase letter',
   validate: (value: string) => /[A-Z]/.test(value),
 }
 
-export const noConsecutiveLetters: Validator = {
+export const noConsecutiveLettersValidator: Validator = {
   id: 'no-consecutive-letters',
   title: 'No consecutive letters',
   validate: (value: string) =>
@@ -26,8 +26,8 @@ export const noConsecutiveLetters: Validator = {
 }
 
 export const defaultValidators: Validator[] = [
-  hasNumber,
-  hasSpecialChar,
-  hasUppercase,
-  noConsecutiveLetters,
+  hasNumberValidator,
+  hasSpecialCharValidator,
+  hasUppercaseValidator,
+  noConsecutiveLettersValidator,
 ]
