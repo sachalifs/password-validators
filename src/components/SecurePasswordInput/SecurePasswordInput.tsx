@@ -36,7 +36,10 @@ export const SecurePasswordInput: React.FC<SecurePasswordInputProps> = ({
         value={value}
         onChange={handleChange}
       />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <div
+        role='menu'
+        style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}
+      >
         {validators.map((validator, index) =>
           renderValidator ? (
             <React.Fragment key={validator.id}>
@@ -45,6 +48,7 @@ export const SecurePasswordInput: React.FC<SecurePasswordInputProps> = ({
           ) : (
             <div
               key={validator.id}
+              role='menuitem'
               style={{
                 display: 'flex',
                 alignItems: 'center',
