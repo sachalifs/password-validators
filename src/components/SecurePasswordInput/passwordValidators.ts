@@ -18,8 +18,16 @@ export const hasUppercase: Validator = {
   validate: (value: string) => /[A-Z]/.test(value),
 }
 
+export const noConsecutiveLetters: Validator = {
+  id: 'no-consecutive-letters',
+  title: 'No consecutive letters',
+  validate: (value: string) =>
+    value.length > 0 && !/[a-zA-Z][a-zA-Z]/.test(value),
+}
+
 export const defaultValidators: Validator[] = [
   hasNumber,
   hasSpecialChar,
   hasUppercase,
+  noConsecutiveLetters,
 ]

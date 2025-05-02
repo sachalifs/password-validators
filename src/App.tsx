@@ -1,7 +1,4 @@
-import {
-  SecurePasswordInput,
-  SecurePasswordInput,
-} from './components/SecurePasswordInput'
+import { SecurePasswordInput } from './components'
 
 function App() {
   return (
