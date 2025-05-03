@@ -1,0 +1,24 @@
+{
+  "name": "password-validators-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@slifszyc/password-validators": "^0.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "gh-pages": "^6.3.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1"
+  }
+}
