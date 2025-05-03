@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { defaultValidators } from './validators'
 import type { Validator } from './types'
 import Indicator from './Indicator'
