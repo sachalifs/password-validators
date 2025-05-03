@@ -31,15 +31,7 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <input value={value} onChange={handleChange} />
 
-          <PasswordValidators
-            value={value}
-            renderValidator={(validator, index) => (
-              <li>
-                {index + 1}. {validator.validate(value) ? 'PASS' : 'FAIL'}:{' '}
-                {validator.title.toUpperCase()}
-              </li>
-            )}
-          />
+          <PasswordValidators value={value} />
         </div>
       </div>
     </div>
