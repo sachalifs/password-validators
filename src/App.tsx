@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { PasswordValidators } from './components'
-import { Validator } from './components/PasswordValidators/types'
 
 function App() {
   const [value, setValue] = useState('')
@@ -10,29 +9,12 @@ function App() {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-      }}
-    >
-      <div
-        style={{
-          padding: '2rem',
-          borderRadius: '8px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        }}
-      >
-        <h1 style={{ marginBottom: '1rem', textAlign: 'center' }}>
-          Password Validator
-        </h1>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <input value={value} onChange={handleChange} />
+    <div>
+      <h1 style={{ fontSize: 32 }}>Password Component</h1>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <input value={value} onChange={handleChange} />
 
-          <PasswordValidators value={value} />
-        </div>
+        <PasswordValidators value={value} />
       </div>
     </div>
   )

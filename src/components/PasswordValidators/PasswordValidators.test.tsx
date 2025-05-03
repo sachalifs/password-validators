@@ -72,9 +72,12 @@ describe('PasswordValidators', () => {
   })
 
   it('works with custom renderer', () => {
-    let value = ''
     const validators = [hasNumberValidator]
-    const customRenderer = (validator: Validator, index: number) => (
+    const customRenderer = (
+      value: string,
+      validator: Validator,
+      index: number
+    ) => (
       <>
         {index + 1}. {validator.validate(value) ? 'PASS' : 'FAIL'}:{' '}
         {validator.title.toUpperCase()}
@@ -93,11 +96,9 @@ describe('PasswordValidators', () => {
       screen.getByText('1. FAIL: CONTAINS A NUMBER (0-9)')
     ).toBeInTheDocument()
 
-    value = '12345'
-
     rerender(
       <PasswordValidators
-        value={value}
+        value='12345'
         validators={validators}
         renderValidator={customRenderer}
       />
