@@ -92,9 +92,7 @@ describe('PasswordValidators', () => {
       />
     )
 
-    expect(
-      screen.getByText('1. FAIL: CONTAINS A NUMBER (0-9)')
-    ).toBeInTheDocument()
+    expect(screen.getByText('1. FAIL: HAS A NUMBER 0-9')).toBeInTheDocument()
 
     rerender(
       <PasswordValidators
@@ -104,9 +102,7 @@ describe('PasswordValidators', () => {
       />
     )
 
-    expect(
-      screen.getByText('1. PASS: CONTAINS A NUMBER (0-9)')
-    ).toBeInTheDocument()
+    expect(screen.getByText('1. PASS: HAS A NUMBER 0-9')).toBeInTheDocument()
   })
 
   it('returns null when there are no validators', () => {

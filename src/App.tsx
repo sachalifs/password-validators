@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PasswordValidators } from './components'
+import './App.css'
 
 function App() {
   const [value, setValue] = useState('')
@@ -9,11 +10,10 @@ function App() {
   }
 
   return (
-    <div>
-      <h1 style={{ fontSize: 32 }}>Password Component</h1>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <div className='app-container'>
+      <h1 className='app-title'>Password Component</h1>
+      <div className='input-container'>
         <input value={value} onChange={handleChange} />
-
         <PasswordValidators value={value} />
       </div>
     </div>

@@ -2,7 +2,7 @@ import type { Validator } from './types'
 
 export const hasNumberValidator: Validator = {
   id: 'has-number',
-  title: 'Has a number (0-9)',
+  title: 'Has a number 0-9',
   validate: (value: string) => /[0-9]/.test(value),
 }
 
