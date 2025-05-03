@@ -1,6 +1,14 @@
-import { SecurePasswordInput } from './components'
+import { useState } from 'react'
+import { PasswordValidators } from './components'
+import { Validator } from './components/PasswordValidators/types'
 
 function App() {
+  const [value, setValue] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
+
   return (
     <div
       style={{
@@ -20,17 +28,19 @@ function App() {
         <h1 style={{ marginBottom: '1rem', textAlign: 'center' }}>
           Password Validator
         </h1>
-        <SecurePasswordInput
-          type='text'
-          placeholder='Enter your password'
-          style={{
-            padding: '0.5rem',
-            fontSize: '1rem',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            width: '300px',
-          }}
-        />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <input value={value} onChange={handleChange} />
+
+          <PasswordValidators
+            value={value}
+            renderValidator={(validator, index) => (
+              <li>
+                {index + 1}. {validator.validate(value) ? 'PASS' : 'FAIL'}:{' '}
+                {validator.title.toUpperCase()}
+              </li>
+            )}
+          />
+        </div>
       </div>
     </div>
   )
