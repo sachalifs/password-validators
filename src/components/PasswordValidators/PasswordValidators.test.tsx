@@ -3,12 +3,23 @@ import { PasswordValidators } from './PasswordValidators'
 import { defaultValidators, hasNumberValidator } from './validators'
 import { Validator } from './types'
 
-describe('SecurePasswordInput', () => {
+// Mock the Indicator component
+jest.mock('./Indicator', () => ({
+  __esModule: true,
+  default: ({ passed }: { passed: boolean }) => (
+    <div data-testid='indicator'>{passed ? '✓' : '✗'}</div>
+  ),
+}))
+
+describe('PasswordValidators', () => {
   it('renders all validators as failed for an empty password', () => {
     render(<PasswordValidators value='' />)
 
-    defaultValidators.forEach((validator) => {
-      expect(screen.getByText(`✗ ${validator.title}`)).toBeInTheDocument()
+    const indicators = screen.getAllByTestId('indicator')
+
+    defaultValidators.forEach((validator, index) => {
+      expect(screen.getByText(validator.title)).toBeInTheDocument()
+      expect(indicators[index]).toHaveTextContent('✗')
     })
   })
 
@@ -21,8 +32,11 @@ describe('SecurePasswordInput', () => {
   it('validates a correct password', () => {
     render(<PasswordValidators value='R2@' />)
 
-    defaultValidators.forEach((validator) => {
-      screen.getByText(`✓ ${validator.title}`)
+    const indicators = screen.getAllByTestId('indicator')
+
+    defaultValidators.forEach((validator, index) => {
+      expect(screen.getByText(validator.title)).toBeInTheDocument()
+      expect(indicators[index]).toHaveTextContent('✓')
     })
   })
 
@@ -33,11 +47,13 @@ describe('SecurePasswordInput', () => {
       <PasswordValidators value='' validators={validators} />
     )
 
-    expect(screen.getByText(`✗ ${validators[0].title}`)).toBeInTheDocument()
+    expect(screen.getByText(validators[0].title)).toBeInTheDocument()
+    expect(screen.getByTestId('indicator')).toHaveTextContent('✗')
 
     rerender(<PasswordValidators value='12345' validators={validators} />)
 
-    expect(screen.getByText(`✓ ${validators[0].title}`)).toBeInTheDocument()
+    expect(screen.getByText(validators[0].title)).toBeInTheDocument()
+    expect(screen.getByTestId('indicator')).toHaveTextContent('✓')
   })
 
   it('works with custom validators', () => {
@@ -51,19 +67,18 @@ describe('SecurePasswordInput', () => {
 
     render(<PasswordValidators value='12345' validators={customValidators} />)
 
-    expect(
-      screen.getByText(`✓ ${customValidators[0].title}`)
-    ).toBeInTheDocument()
+    expect(screen.getByText(customValidators[0].title)).toBeInTheDocument()
+    expect(screen.getByTestId('indicator')).toHaveTextContent('✓')
   })
 
   it('works with custom renderer', () => {
     let value = ''
     const validators = [hasNumberValidator]
     const customRenderer = (validator: Validator, index: number) => (
-      <li>
+      <>
         {index + 1}. {validator.validate(value) ? 'PASS' : 'FAIL'}:{' '}
         {validator.title.toUpperCase()}
-      </li>
+      </>
     )
 
     const { rerender } = render(
@@ -91,5 +106,12 @@ describe('SecurePasswordInput', () => {
     expect(
       screen.getByText('1. PASS: CONTAINS A NUMBER (0-9)')
     ).toBeInTheDocument()
+  })
+
+  it('returns null when there are no validators', () => {
+    const { container } = render(
+      <PasswordValidators value='' validators={[]} />
+    )
+    expect(container.firstChild).toBeNull()
   })
 })
