@@ -6,7 +6,9 @@ This monorepo contains two packages:
 
 A React component that provides visual feedback for password validation rules.
 
-This is the main package where you'll find the component, unit tests, development environment, docs and assumptions. Please read through this doc.
+This is the main package where you'll find the component, unit tests, development environment, docs and assumptions.
+
+👉 Please read through the [README](./packages/password-validators/README.md) in that project.
 
 ### [password-validators-demo](./packages/password-validators-demo)
 
