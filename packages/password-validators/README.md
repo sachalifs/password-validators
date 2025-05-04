@@ -22,6 +22,19 @@ A React component for password validation with visual indicators with a simple A
 - ESLint for code linting
 - TSUP for building
 
+## Assumptions
+
+- The component is designed as a standalone, reusable package with a minimal API.
+- This component is part of a larger design system, following established company's design rules and component patterns.
+- While the component allows for visual customization, it maintains strict adherence to the _"company's"_ design system principles and brand guidelines.
+- Styles are bundled using CSS-in-JS to provide a ready-to-use component without additional styling dependencies.
+
+## Future improvements
+
+- Enhance Storybook documentation with dedicated pages for different stakeholders showcasing different usages.
+- Replace text-based status indicators with SVG icons to ensure consistent rendering across different environments and avoid different font browser issues.
+- Implement visual regression testing using Cypress and Percy by Browserstack to prevent UI regressions and ensure visual consistency across component updates.
+
 ## Installation
 
 ```bash
