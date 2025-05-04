@@ -2,6 +2,8 @@
 
 A React component for password validation with visual indicators with a simple API and ready-to-use.
 
+![demo](https://github.com/user-attachments/assets/f292b646-3974-49c1-955e-0eb7cbdc77f8)
+
 ## Features
 
 - Real-time password validation
