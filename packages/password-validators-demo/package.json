@@ -12,7 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@slifszyc/password-validators": "^0.2.3",
+    "@slifszyc/password-validators": "^1.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

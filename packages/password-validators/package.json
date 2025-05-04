@@ -1,7 +1,7 @@
 {
   "name": "@slifszyc/password-validators",
   "type": "module",
-  "version": "0.2.3",
+  "version": "1.0.1",
   "description": "A React component for password validation with visual indicators",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
