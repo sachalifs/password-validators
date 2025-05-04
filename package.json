@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "deploy": "npm run deploy -w password-validators-demo",
-    "dev": "npm run dev -w password-validators-demo",
+    "start": "npm run dev -w password-validators-demo",
+    "dev": "npm run storybook -w @slifszyc/password-validators",
     "build": "npm run build -w @slifszyc/password-validators && npm run build -w password-validators-demo",
     "test": "npm run test -w @slifszyc/password-validators",
     "lint": "eslint ."

@@ -22,10 +22,18 @@ npm install
 
 ### Development
 
-To run the demo application:
+To start Storybook and develop inside the `password-validators` package:
 
 ```bash
 npm run dev
+```
+
+### Start application
+
+To run the demo application:
+
+```bash
+npm start
 ```
 
 ### Building
