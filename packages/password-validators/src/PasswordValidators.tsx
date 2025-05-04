@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { defaultValidators } from './validators'
 import type { Validator } from './types'
 import Indicator from './Indicator'
-import './PasswordValidators.css'
+import { ValidatorsList, ValidatorItem } from './styled'
 
 interface Props {
   /** The password value to validate */
@@ -67,12 +67,9 @@ export const PasswordValidators: React.FC<Props> = ({
   }
 
   return (
-    <ul
-      className={`password-validators${className ? ` ${className}` : ''}`}
-      style={style}
-    >
+    <ValidatorsList className={className} style={style}>
       {validators.map((validator, index) => (
-        <li key={validator.id} className='password-validator-item'>
+        <ValidatorItem key={validator.id}>
           {renderValidator ? (
             renderValidator(value, validator, index)
           ) : (
@@ -81,8 +78,8 @@ export const PasswordValidators: React.FC<Props> = ({
               <span>{validator.title}</span>
             </>
           )}
-        </li>
+        </ValidatorItem>
       ))}
-    </ul>
+    </ValidatorsList>
   )
 }
