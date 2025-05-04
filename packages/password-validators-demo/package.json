@@ -2,7 +2,6 @@
   "name": "password-validators-demo",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
@@ -12,7 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@slifszyc/password-validators": "^1.0.1",
+    "@slifszyc/password-validators": "^1.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
