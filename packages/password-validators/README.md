@@ -114,21 +114,19 @@ function App() {
 import { PasswordValidators } from '@slifszyc/password-validators'
 
 function App() {
-  const customRenderValidator = (value: string, validator, index) => {
-    const isValid = validator.validate(value)
-
-    return (
-      <>
-        <span>{index + 1}.</span> {validator.title} (
-        {isValid ? 'passed' : 'failed'})
-      </>
-    )
-  }
-
   return (
     <PasswordValidators
       value={password}
-      renderValidator={customRenderValidator}
+      renderValidator={(value, validator, index) => {
+        const isValid = validator.validate(value)
+
+        return (
+          <>
+            <span>{index + 1}.</span> {validator.title} (
+            {isValid ? 'passed' : 'failed'})
+          </>
+        )
+      }}
     />
   )
 }
