@@ -55,31 +55,38 @@ interface Props {
  * />
  * ```
  */
-export const PasswordValidators: React.FC<Props> = ({
-  value,
-  validators = defaultValidators,
-  renderValidator,
-  className,
-  style,
-}) => {
-  if (validators.length === 0) {
-    return null
-  }
+export const PasswordValidators = React.forwardRef<HTMLUListElement, Props>(
+  (
+    {
+      value,
+      validators = defaultValidators,
+      renderValidator,
+      className,
+      style,
+    },
+    ref
+  ) => {
+    if (validators.length === 0) {
+      return null
+    }
 
-  return (
-    <ValidatorsList className={className} style={style}>
-      {validators.map((validator, index) => (
-        <ValidatorItem key={validator.id}>
-          {renderValidator ? (
-            renderValidator(value, validator, index)
-          ) : (
-            <>
-              <Indicator passed={validator.validate(value)} />
-              <span>{validator.title}</span>
-            </>
-          )}
-        </ValidatorItem>
-      ))}
-    </ValidatorsList>
-  )
-}
+    return (
+      <ValidatorsList ref={ref} className={className} style={style}>
+        {validators.map((validator, index) => (
+          <ValidatorItem key={validator.id}>
+            {renderValidator ? (
+              renderValidator(value, validator, index)
+            ) : (
+              <>
+                <Indicator passed={validator.validate(value)} />
+                <span>{validator.title}</span>
+              </>
+            )}
+          </ValidatorItem>
+        ))}
+      </ValidatorsList>
+    )
+  }
+)
+
+PasswordValidators.displayName = 'PasswordValidators'
