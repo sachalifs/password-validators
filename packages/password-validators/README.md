@@ -1,7 +1,5 @@
 # @slifszyc/password-validators
 
-This is the main package where you'll find the component, unit tests, development environment, docs and assumptions. Please read through [the docs](https://github.com/slifszyc/password-field-validator/blob/main/README.md) in that project.
-
 A React component for password validation with visual indicators with a simple API and ready-to-use.
 
 ![demo](https://github.com/user-attachments/assets/f292b646-3974-49c1-955e-0eb7cbdc77f8)
