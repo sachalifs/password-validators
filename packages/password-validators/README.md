@@ -34,6 +34,7 @@ A React component for password validation with visual indicators with a simple A
 - Enhance Storybook documentation with dedicated pages for different stakeholders showcasing different usages.
 - Replace text-based status indicators with SVG icons to ensure consistent rendering across different environments and avoid different font browser issues.
 - Implement visual regression testing using Cypress and Percy by Browserstack to prevent UI regressions and ensure visual consistency across component updates.
+- This component could be renamed to something more generic and not password associated like `RequirementsMet`, reflecting the intention that this is just a UI component that can be used for other types of fields as well (like to show complex form field validations to users).
 
 ## Installation
 
